@@ -10,11 +10,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class WebAppApplicationTests {
 
-	@Test //comenstadssadadssssszsass
+	@Test //comenstadssadadssssszsaasdss
 	public void contextLoads() {
 		Assert.assertTrue(true);
 	}
 
-	//git add -A && git commit -m "msg" && git push origin development
+	//git add -A && git commit -m "msg" && git push origin master
 
 }
