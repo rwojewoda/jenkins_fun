@@ -12,6 +12,7 @@ public class DifferentTest {
 
 	@Test //comenstadssadadssssszsaasdss
 	public void contextLoads() {
+		System.out.print("Dziala!");
 		Assert.assertTrue(true);
 	}
 
