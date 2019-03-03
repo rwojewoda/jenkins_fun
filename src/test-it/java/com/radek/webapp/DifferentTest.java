@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class DifferentTest {
 
-	@Test //comenstadssadadssssszsaasdss
+	@Test //comenstadssadadssssszsaas
 	public void contextLoads() {
 		System.out.print("Dziala!");
 		Assert.assertTrue(true);
