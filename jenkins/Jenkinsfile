@@ -21,13 +21,12 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-
-
-
         stage('Remote SSH') {
-            sshagent(['e4fbd939-914a-41ed-92d9-8eededfb9243']) {
-                // 'myuid@' required for scp (this is from UID jenkins to UID myuid)
-                sh 'ssh -o StrictHostKeyChecking=no pi@192.168.1.17 "echo \$HOME"'
+            steps {
+                sshagent(['pi_key']) {
+                    // 'myuid@' required for scp (this is from UID jenkins to UID myuid)
+                    sh 'ssh -o StrictHostKeyChecking=no pi@192.168.1.17 "echo \$HOME"'
+                }
             }
         }
     }
