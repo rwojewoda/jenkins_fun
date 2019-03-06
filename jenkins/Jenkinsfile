@@ -25,22 +25,10 @@ pipeline {
 
 
         stage('Remote SSH') {
-         steps {
-                script {
-                      withCredentials([string(credentialsId: 'PI_PASS', variable: 'PI_PASS')]) {
-                         remote = [:]
-                         remote.name = 'pi'
-                         remote.host = '192.168.1.12'
-                         remote.user = 'pi'
-                         remote.password = env.PI_PASS
-                         remote.allowAnyHosts = true
-                      }
-                }
+            sshagent(['e4fbd939-914a-41ed-92d9-8eededfb9243']) {
+                // 'myuid@' required for scp (this is from UID jenkins to UID myuid)
+                sh 'ssh -o StrictHostKeyChecking=no pi@192.168.1.17 "echo \$HOME"'
             }
-
-
-          sshCommand remote: remote, command: "ls -lrt"
-          sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
         }
     }
 }
