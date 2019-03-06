@@ -23,6 +23,10 @@ pipeline {
         }
 
 
+
+        stage('Remote SSH') {
+         steps {
+                script {
                       withCredentials([string(credentialsId: 'PI_PASS', variable: 'PI_PASS')]) {
                          remote = [:]
                          remote.name = 'pi'
@@ -31,8 +35,8 @@ pipeline {
                          remote.password = env.PI_PASS
                          remote.allowAnyHosts = true
                       }
-        stage('Remote SSH') {
-
+                }
+            }
 
 
           sshCommand remote: remote, command: "ls -lrt"
