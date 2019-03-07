@@ -10,12 +10,9 @@ pipeline {
             }
         stages {
 
-                 stage('Deploy') {
+                 stage('Test') {
                      steps {
-                        script {
-                            def dockerImage = docker.build("my-image:${env.BUILD_ID}")
-                            dockerImage.push
-                        }
+                        //do it
                      }
                  }
             }
@@ -29,6 +26,16 @@ pipeline {
                 }
             }
         }
+
+         stage('Deploy') {
+            agent any
+             steps {
+                script {
+                    def dockerImage = docker.build("my-image:${env.BUILD_ID}")
+                    dockerImage.push
+                }
+             }
+         }
 
 
     }
