@@ -10,7 +10,7 @@ pipeline {
         stage('Remote SSH') {
             steps {
             script{
-                sh 'ps -x'
+                sh 'ssh-agent'
             }
                 sshagent(['pi_key']) {
                     // 'myuid@' required for scp (this is from UID jenkins to UID myuid)
