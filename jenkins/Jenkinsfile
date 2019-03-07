@@ -18,15 +18,6 @@ pipeline {
             }
         }
 
-        stage('Remote SSH') {
-            agent any
-            steps {
-                sshagent(['pi_key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no pi@192.168.1.12 "./deploy.sh"'
-                }
-            }
-        }
-
          stage('Deploy') {
             agent any
              steps {
@@ -36,6 +27,17 @@ pipeline {
                 }
              }
          }
+
+        stage('Remote SSH') {
+            agent any
+            steps {
+                sshagent(['pi_key']) {
+                    sh 'ssh -o StrictHostKeyChecking=no pi@192.168.1.12 "./deploy.sh"'
+                }
+            }
+        }
+
+
 
 
     }
