@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3.6.0-jdk-13-alpine'
+            image 'maven:3-alpine'
             args '-v /root/.m2:/root/.m2'
         }
     }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sshagent(['pi_key']) {
                     // 'myuid@' required for scp (this is from UID jenkins to UID myuid)
-                    sh 'ssh -o StrictHostKeyChecking=no pi@192.168.1.17 "echo \$HOME"'
+                    sh 'ssh -o StrictHostKeyChecking=no pi@192.168.1.17 '
                 }
             }
         }
