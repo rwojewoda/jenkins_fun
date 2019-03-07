@@ -6,23 +6,11 @@ pipeline {
         }
     }
     stages {
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
         stage('Remote SSH') {
             steps {
+            script{
+                ps -aux | grep ssh
+            }
                 sshagent(['pi_key']) {
                     // 'myuid@' required for scp (this is from UID jenkins to UID myuid)
                     sh 'ssh -o StrictHostKeyChecking=no pi@192.168.1.17 '
