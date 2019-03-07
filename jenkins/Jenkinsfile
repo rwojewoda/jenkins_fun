@@ -8,8 +8,7 @@ pipeline {
                     args '-v /root/.m2:/root/.m2'
                 }
             }
-            steps{
-             script {
+        stages {
                  stage('Test') {
                              steps {
                                  sh 'mvn test'
@@ -25,7 +24,6 @@ pipeline {
                          echo 'Deploying....'
                      }
                  }
-             }
 
             }
         }
