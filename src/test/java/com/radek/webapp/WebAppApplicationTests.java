@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class WebAppApplicationTests {
 
-	@Test //comenstadssadadssssszsaasdsss
+	@Test //comenstad
 	public void contextLoads() {
 		Assert.assertTrue(true);
 	}
