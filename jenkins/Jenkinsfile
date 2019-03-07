@@ -2,7 +2,7 @@ pipeline {
     agent none
       environment {
         registry = "davout123/pi"
-        registryCredential = ‘docker_creds’
+        registryCredential = "docker_creds"
       }
     stages {
         stage('Maven'){
