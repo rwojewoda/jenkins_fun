@@ -3,6 +3,7 @@ pipeline {
       environment {
         registry = "davout123/pi"
         registryCredential = "docker_creds"
+        dockerImage = ''
       }
     stages {
         stage('Maven'){
@@ -28,10 +29,13 @@ pipeline {
             agent any
              steps {
                 script {
-                    def dockerImage = docker.build("my-image:${env.BUILD_ID}")
-                    dockerImage.push()
+                    dockerImage = docker.build("pi-image:${env.BUILD_ID}")
+                      docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                      }
                 }
              }
+
          }
 
         stage('Remote SSH') {
