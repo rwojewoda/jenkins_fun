@@ -12,7 +12,8 @@ pipeline {
 
                  stage('Deploy') {
                      steps {
-                         echo 'Deploying....'
+                        def dockerImage = docker.build("my-image:${env.BUILD_ID}")
+                        dockerImage.push()
                      }
                  }
             }
@@ -26,6 +27,8 @@ pipeline {
                 }
             }
         }
+
+
     }
 }
 
