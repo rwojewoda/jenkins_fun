@@ -14,18 +14,17 @@ pipeline {
                 }
             }
         stages {
-
-                 stage('Test') {
-                    stage('Test') {
-                         steps {
-                             sh 'mvn test'
-                         }
+                stage('Test') {
+                     steps {
+                         sh 'mvn test'
                      }
-                     stage('Build') {
-                         steps {
-                             sh 'mvn -B -DskipTests clean package'
-                         }
+                 }
+                 stage('Build') {
+                     steps {
+                         sh 'mvn -B -DskipTests clean package'
                      }
+                 }
+                 stage('Czy dziala') {
                      steps {
                         script {
                             echo 'Deploying....'
