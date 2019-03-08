@@ -16,6 +16,16 @@ pipeline {
         stages {
 
                  stage('Test') {
+                    stage('Test') {
+                         steps {
+                             sh 'mvn test'
+                         }
+                     }
+                     stage('Build') {
+                         steps {
+                             sh 'mvn -B -DskipTests clean package'
+                         }
+                     }
                      steps {
                         script {
                             echo 'Deploying....'
