@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM arm32v6/openjdk:8-alpine
 VOLUME /tmp
 ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
