@@ -4,3 +4,5 @@ docker container run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /var/run/d
 
 
 eval $(ssh-agent -s)
+
+docker container run --name java  -p 8080:8080 -d davout123/pi:47
