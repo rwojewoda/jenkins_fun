@@ -38,7 +38,7 @@ pipeline {
             agent any
              steps {
                 script {
-                    dockerImage = docker.build(registry + ":${env.BUILD_ID}")
+                    dockerImage = docker.build(registry)
                       docker.withRegistry( '', registryCredential ) {
                         //dockerImage.push()
                       }
