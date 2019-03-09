@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 public class Controller {
     @GetMapping("/")
     public String defaultMapping(){
-        executeBashCommand("dir");
+        executeBashCommand("ls -a");
         return "Dzialam";
     }
 
