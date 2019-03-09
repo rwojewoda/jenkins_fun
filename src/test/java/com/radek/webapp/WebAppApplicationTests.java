@@ -1,6 +1,7 @@
 package com.radek.webapp;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,18 +22,21 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration
 public class WebAppApplicationTests {
 
-	@Test //comenstad
-	public void contextLoads() throws Exception {
-		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get("/")).andReturn();
-		Assert.assertTrue(true);
-	}
+
 
 	protected MockMvc mvc;
 	@Autowired
 	WebApplicationContext webApplicationContext;
 
-	protected void setUp() {
+	@Before
+	public void setUp() {
 		mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+	}
+
+	@Test //comenstad
+	public void contextLoads() throws Exception {
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get("/")).andReturn();
+		Assert.assertTrue(true);
 	}
 
 	//git add -A && git commit -m "msg" && git push origin master
